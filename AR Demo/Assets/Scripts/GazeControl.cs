@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GazeControl : MonoBehaviour {
 
-	private float gazeTime = 0;
+ 	private float gazeTime = 0;
 	// Use this for initialization
 	void Start () {
 		
@@ -26,8 +26,9 @@ public class GazeControl : MonoBehaviour {
 				gazeTime += Time.deltaTime;
 				if(gazeTime >= 3f){
 					//trigger something.
-					Debug.Log("Lol!");
-				}
+					rayHit.transform.GetComponent<Paper>().ActivateContent();
+ 					gazeTime = 0f;
+				}  
 			}
 		}
 	}
