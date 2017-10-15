@@ -22,13 +22,13 @@ public class GazeControl : MonoBehaviour {
 		RaycastHit rayHit = new RaycastHit();
 
 		if(Physics.Raycast (ray, out rayHit, Mathf.Infinity)){
- 			if(rayHit.transform.GetComponent<Paper>() != null){ 
+ 			if(rayHit.transform.GetComponent<ContentHolder>() != null){ 
 				gazeTime += Time.deltaTime;
 				if(gazeTime >= 3f){
 					//trigger something.
-					rayHit.transform.GetComponent<Paper>().ActivateContent();
+					rayHit.transform.GetComponent<ContentHolder>().ActivateContent();
  					gazeTime = 0f;
-				}  
+				}   
 			}
 		}
 	}
