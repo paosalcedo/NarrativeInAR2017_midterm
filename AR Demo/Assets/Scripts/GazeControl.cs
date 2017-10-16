@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GazeControl : MonoBehaviour {
 
+	public GameObject exitButtonGameObject;
 	public Image gazeProgressImg;
  	private float gazeTime = 0;
 	
@@ -17,6 +18,7 @@ public class GazeControl : MonoBehaviour {
 	void Update () {
 		// ShootRay();
 		DetectTouchWorld();
+		gazeProgressImg.fillAmount = 0;
 	}
 
 	public void ShootRay(){
@@ -57,14 +59,15 @@ public class GazeControl : MonoBehaviour {
 					 if(raycastHit.transform.name == "NextVidButton"){
 						 if(!raycastHit.transform.GetComponent<ContentHolder>().hasBeenPressed){ //has not been pressed, play AwakeContent
 							raycastHit.transform.GetComponent<ContentHolder>().AwakeContent();
+							gazeProgressImg.fillAmount = 1;
 						 } else{
 							raycastHit.transform.GetComponent<ContentHolder>().NextContent();
+							gazeProgressImg.fillAmount = 1;
 						 }
-					 }
+					 } 
 
 					 if (raycastHit.transform.tag == "Exit"){
 						 Application.Quit();
-						 Debug.Log("hehehe");
 					 }
 				 }
              }
